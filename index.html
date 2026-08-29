@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DMG Modding | Início</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================= -->
+    <!-- CABEÇALHO -->
+    <!-- ========================= -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            DMG <span>MODDING</span>
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="loja.html">
+                Loja
+            </a>
+
+            <a href="modelos3d.html">
+                Modelos 3D
+            </a>
+
+            <a href="mods.html">
+                Mods
+            </a>
+
+            <a href="videos.html">
+                Vídeos
+            </a>
+
+        </nav>
+
+
+        <button
+            class="carrinho"
+            onclick="abrirCarrinho()">
+
+            🛒
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ========================= -->
+    <!-- BANNER -->
+    <!-- ========================= -->
+
+    <main>
+
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <p class="destaque">
+                    DMG MODDING
+                </p>
+
+
+                <h1>
+
+                    UMA NOVA<br>
+                    EXPERIÊNCIA<br>
+                    NO AGRO.
+
+                </h1>
+
+
+                <p class="descricao-hero">
+
+                    Modelos 3D, mods, mapas e conteúdos
+                    para quem é apaixonado pelo mundo do agro.
+
+                </p>
+
+
+                <a
+                    href="loja.html"
+                    class="botao">
+
+                    VER LOJA
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- DESTAQUES -->
+        <!-- ========================= -->
+
+        <section class="produtos">
+
+            <h2>
+                PRODUTOS EM DESTAQUE
+            </h2>
+
+
+            <div class="cards">
+
+
+                <!-- PRODUTO 1 -->
+
+                <div class="card">
+
+                    <div class="imagem">
+
+                        <img
+                            src="imagens/modelo01.jpg"
+                            alt="Modelo 3D DMG Modding">
+
+                    </div>
+
+
+                    <h3>
+                        Modelo 3D DMG #01
+                    </h3>
+
+
+                    <p>
+                        Modelo 3D
+                    </p>
+
+
+                    <strong>
+                        R$ 19,90
+                    </strong>
+
+
+                    <button
+                        onclick="adicionarCarrinho(
+                            'Modelo 3D DMG #01',
+                            19.90
+                        )">
+
+                        COMPRAR
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- PRODUTO 2 -->
+
+                <div class="card">
+
+                    <div class="imagem">
+                        📦
+                    </div>
+
+
+                    <h3>
+                        Pack Agro
+                    </h3>
+
+
+                    <p>
+                        Pack de modelos 3D
+                    </p>
+
+
+                    <strong>
+                        R$ 29,90
+                    </strong>
+
+
+                    <button
+                        onclick="adicionarCarrinho(
+                            'Pack Agro',
+                            29.90
+                        )">
+
+                        COMPRAR
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- PRODUTO 3 -->
+
+                <div class="card">
+
+                    <div class="imagem">
+                        🗺️
+                    </div>
+
+
+                    <h3>
+                        Taboão Map
+                    </h3>
+
+
+                    <p>
+                        Mapa para Farming Simulator
+                    </p>
+
+
+                    <strong>
+                        R$ 39,90
+                    </strong>
+
+
+                    <button
+                        onclick="adicionarCarrinho(
+                            'Taboão Map',
+                            39.90
+                        )">
+
+                        COMPRAR
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================= -->
+    <!-- CARRINHO -->
+    <!-- ========================= -->
+
+    <div
+        id="carrinho"
+        class="carrinho-box">
+
+
+        <div class="carrinho-conteudo">
+
+
+            <button
+                class="fechar"
+                onclick="fecharCarrinho()">
+
+                ✕
+
+            </button>
+
+
+            <h2>
+                SEU CARRINHO
+            </h2>
+
+
+            <div id="listaCarrinho">
+
+            </div>
+
+
+            <div class="total">
+
+                Total:
+
+                R$
+
+                <span id="total">
+                    0,00
+                </span>
+
+            </div>
+
+
+            <button
+                class="finalizar"
+                onclick="finalizarCompra()">
+
+                FINALIZAR COMPRA
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================= -->
+    <!-- RODAPÉ -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <h2>
+            DMG MODDING
+        </h2>
+
+
+        <p>
+            Uma nova experiência no agro.
+        </p>
+
+
+        <p>
+            © 2026 DMG Modding
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/loja.js"></script>
+
+
+</body>
+
+</html>

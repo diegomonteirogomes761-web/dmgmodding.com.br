@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DMG Modding | Loja</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================
+     CABEÇALHO
+======================================== -->
+
+<header>
+
+    <a href="index.html" class="logo">
+        DMG <span>MODDING</span>
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="loja.html">
+            Loja
+        </a>
+
+        <a href="modelos3d.html">
+            Modelos 3D
+        </a>
+
+        <a href="mods.html">
+            Mods
+        </a>
+
+        <a href="videos.html">
+            Vídeos
+        </a>
+
+    </nav>
+
+
+    <button
+        class="carrinho"
+        onclick="abrirCarrinho()">
+
+        🛒
+
+    </button>
+
+</header>
+
+
+
+<!-- ========================================
+     CONTEÚDO
+======================================== -->
+
+<main>
+
+
+    <!-- ====================================
+         TÍTULO DA LOJA
+    ==================================== -->
+
+    <section class="titulo">
+
+        <p class="destaque">
+            DMG MODDING
+        </p>
+
+        <h1>
+            LOJA
+        </h1>
+
+        <p>
+            Modelos 3D, mods, mapas e conteúdos
+            desenvolvidos pela DMG Modding.
+        </p>
+
+    </section>
+
+
+
+    <!-- ====================================
+         CATEGORIAS
+    ==================================== -->
+
+    <section class="produtos">
+
+
+        <div class="categorias">
+
+            <button
+                class="categoria ativa"
+                onclick="filtrarProdutos('todos')">
+
+                TODOS
+
+            </button>
+
+
+            <button
+                class="categoria"
+                onclick="filtrarProdutos('modelos')">
+
+                MODELOS 3D
+
+            </button>
+
+
+            <button
+                class="categoria"
+                onclick="filtrarProdutos('mods')">
+
+                MODS
+
+            </button>
+
+
+            <button
+                class="categoria"
+                onclick="filtrarProdutos('mapas')">
+
+                MAPAS
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ====================================
+             CARDS
+        ==================================== -->
+
+        <div class="cards">
+
+
+
+            <!-- ==================================
+                 MODELO 3D DMG #01
+            ================================== -->
+
+            <div
+                class="card"
+                data-categoria="modelos">
+
+
+                <!-- IMAGEM CLICÁVEL -->
+
+                <a href="produto01.html">
+
+                    <div class="imagem">
+
+                        <img
+                            src="imagens/modelo01.jpg"
+                            alt="Modelo 3D DMG #01">
+
+                    </div>
+
+                </a>
+
+
+
+                <h3>
+
+                    <a
+                        href="produto01.html"
+                        style="color: inherit; text-decoration: none;">
+
+                        Modelo 3D DMG #01
+
+                    </a>
+
+                </h3>
+
+
+                <p>
+
+                    Modelo 3D desenvolvido pela
+                    DMG Modding.
+
+                </p>
+
+
+                <strong>
+
+                    R$ 19,90
+
+                </strong>
+
+
+                <button
+                    onclick="adicionarCarrinho(
+                        'Modelo 3D DMG #01',
+                        19.90
+                    )">
+
+                    COMPRAR
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PACK AGRO
+            ================================== -->
+
+            <div
+                class="card"
+                data-categoria="modelos">
+
+
+                <div class="imagem">
+
+                    📦
+
+                </div>
+
+
+                <h3>
+
+                    Pack Agro
+
+                </h3>
+
+
+                <p>
+
+                    Pack de modelos 3D
+                    para seus projetos.
+
+                </p>
+
+
+                <strong>
+
+                    R$ 29,90
+
+                </strong>
+
+
+                <button
+                    onclick="adicionarCarrinho(
+                        'Pack Agro',
+                        29.90
+                    )">
+
+                    COMPRAR
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ==================================
+                 TABOÃO MAP
+            ================================== -->
+
+            <div
+                class="card"
+                data-categoria="mapas">
+
+
+                <div class="imagem">
+
+                    🗺️
+
+                </div>
+
+
+                <h3>
+
+                    Taboão Map
+
+                </h3>
+
+
+                <p>
+
+                    Mapa para Farming Simulator.
+
+                </p>
+
+
+                <strong>
+
+                    R$ 39,90
+
+                </strong>
+
+
+                <button
+                    onclick="adicionarCarrinho(
+                        'Taboão Map',
+                        39.90
+                    )">
+
+                    COMPRAR
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ==================================
+                 DMG AGRO PACK
+            ================================== -->
+
+            <div
+                class="card"
+                data-categoria="mods">
+
+
+                <div class="imagem">
+
+                    ⚙️
+
+                </div>
+
+
+                <h3>
+
+                    DMG Agro Pack
+
+                </h3>
+
+
+                <p>
+
+                    Conteúdos e mods para
+                    Farming Simulator.
+
+                </p>
+
+
+                <strong>
+
+                    R$ 14,90
+
+                </strong>
+
+
+                <button
+                    onclick="adicionarCarrinho(
+                        'DMG Agro Pack',
+                        14.90
+                    )">
+
+                    COMPRAR
+
+                </button>
+
+
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- ========================================
+     CARRINHO
+======================================== -->
+
+<div
+    id="carrinho"
+    class="carrinho-box">
+
+
+    <div class="carrinho-conteudo">
+
+
+        <button
+            class="fechar"
+            onclick="fecharCarrinho()">
+
+            ✕
+
+        </button>
+
+
+        <h2>
+
+            SEU CARRINHO
+
+        </h2>
+
+
+        <div id="listaCarrinho">
+
+        </div>
+
+
+        <div class="total">
+
+            Total:
+
+            R$
+
+            <span id="total">
+                0,00
+            </span>
+
+        </div>
+
+
+        <button
+            class="finalizar"
+            onclick="finalizarCompra()">
+
+            FINALIZAR COMPRA
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================================
+     RODAPÉ
+======================================== -->
+
+<footer>
+
+    <h2>
+
+        DMG MODDING
+
+    </h2>
+
+
+    <p>
+
+        Uma nova experiência no agro.
+
+    </p>
+
+
+    <p>
+
+        © 2026 DMG Modding
+
+    </p>
+
+</footer>
+
+
+
+<!-- ========================================
+     JAVASCRIPT
+======================================== -->
+
+<script src="js/loja.js"></script>
+
+
+
+<script>
+
+
+// ========================================
+// FILTRAR PRODUTOS
+// ========================================
+
+function filtrarProdutos(categoria) {
+
+
+    const produtos =
+        document.querySelectorAll(
+            ".card[data-categoria]"
+        );
+
+
+    const botoes =
+        document.querySelectorAll(
+            ".categoria"
+        );
+
+
+
+    // ==============================
+    // BOTÃO ATIVO
+    // ==============================
+
+    botoes.forEach(function(botao) {
+
+        botao.classList.remove("ativa");
+
+    });
+
+
+
+    // ==============================
+    // IDENTIFICAR BOTÃO
+    // ==============================
+
+    botoes.forEach(function(botao) {
+
+
+        const texto =
+            botao.textContent
+                .trim()
+                .toLowerCase();
+
+
+        if (
+            (categoria === "todos" &&
+             texto === "todos") ||
+
+            (categoria === "modelos" &&
+             texto.includes("modelos")) ||
+
+            (categoria === "mods" &&
+             texto === "mods") ||
+
+            (categoria === "mapas" &&
+             texto === "mapas")
+        ) {
+
+            botao.classList.add("ativa");
+
+        }
+
+    });
+
+
+
+    // ==============================
+    // MOSTRAR / ESCONDER PRODUTOS
+    // ==============================
+
+    produtos.forEach(function(produto) {
+
+
+        if (
+            categoria === "todos" ||
+            produto.dataset.categoria === categoria
+        ) {
+
+            produto.style.display = "";
+
+        }
+
+        else {
+
+            produto.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+// ========================================
+// INICIALIZAR LOJA
+// ========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        filtrarProdutos("todos");
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>DMG Modding | Checkout</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         CABEÇALHO
+    ======================================== -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            DMG <span>MODDING</span>
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="loja.html">
+                Loja
+            </a>
+
+            <a href="modelos3d.html">
+                Modelos 3D
+            </a>
+
+            <a href="mods.html">
+                Mods
+            </a>
+
+            <a href="videos.html">
+                Vídeos
+            </a>
+
+        </nav>
+
+
+        <button
+            class="carrinho"
+            onclick="voltarCarrinho()">
+
+            🛒
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ========================================
+         CHECKOUT
+    ======================================== -->
+
+    <main>
+
+
+        <section class="checkout">
+
+
+            <div class="checkout-titulo">
+
+                <p class="destaque">
+                    DMG MODDING
+                </p>
+
+
+                <h1>
+                    FINALIZAR COMPRA
+                </h1>
+
+
+                <p>
+                    Confira seu pedido antes de continuar.
+                </p>
+
+            </div>
+
+
+
+            <div class="checkout-grid">
+
+
+                <!-- ==================================
+                     DADOS DO CLIENTE
+                ================================== -->
+
+                <div class="checkout-form">
+
+                    <h2>
+                        SEUS DADOS
+                    </h2>
+
+
+                    <label for="nome">
+                        Nome
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite seu nome">
+
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail">
+
+
+
+                    <h2 class="pagamento-titulo">
+                        FORMA DE PAGAMENTO
+                    </h2>
+
+
+                    <div class="pagamento-opcoes">
+
+
+                        <label class="pagamento">
+
+                            <input
+                                type="radio"
+                                name="pagamento"
+                                value="pix"
+                                checked>
+
+
+                            <div>
+
+                                <strong>
+                                    PIX
+                                </strong>
+
+
+                                <span>
+                                    Pagamento instantâneo
+                                </span>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <label class="pagamento pagamento-desativado">
+
+                            <input
+                                type="radio"
+                                name="pagamento"
+                                value="cartao"
+                                disabled>
+
+
+                            <div>
+
+                                <strong>
+                                    Cartão
+                                </strong>
+
+
+                                <span>
+                                    Em breve
+                                </span>
+
+                            </div>
+
+                        </label>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     RESUMO DO PEDIDO
+                ================================== -->
+
+                <div class="resumo">
+
+                    <h2>
+                        RESUMO DO PEDIDO
+                    </h2>
+
+
+                    <div id="resumoProdutos">
+
+                        <!-- Produtos aparecem aqui -->
+
+                    </div>
+
+
+                    <div class="resumo-total">
+
+                        <span>
+                            TOTAL
+                        </span>
+
+
+                        <strong id="checkoutTotal">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        class="botao-pagar"
+                        onclick="processarCheckout()">
+
+                        CONTINUAR PARA PAGAMENTO
+
+                    </button>
+
+
+                    <button
+                        class="voltar-loja"
+                        onclick="voltarLoja()">
+
+                        ← VOLTAR PARA A LOJA
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================================
+         RODAPÉ
+    ======================================== -->
+
+    <footer>
+
+        <h2>
+            DMG MODDING
+        </h2>
+
+
+        <p>
+            Uma nova experiência no agro.
+        </p>
+
+
+        <p>
+            © 2026 DMG Modding
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/loja.js"></script>
+
+
+    <script>
+
+
+        // ====================================
+        // CARREGAR PEDIDO
+        // ====================================
+
+        function carregarCheckout() {
+
+            const resumo =
+                document.getElementById(
+                    "resumoProdutos"
+                );
+
+
+            const totalElemento =
+                document.getElementById(
+                    "checkoutTotal"
+                );
+
+
+            if (!resumo || !totalElemento) {
+
+                return;
+
+            }
+
+
+            // Recupera o carrinho
+
+            const carrinhoSalvo =
+                localStorage.getItem(
+                    "carrinhoDMG"
+                );
+
+
+            if (!carrinhoSalvo) {
+
+                mostrarCarrinhoVazio();
+
+                return;
+
+            }
+
+
+            let produtos;
+
+
+            try {
+
+                produtos =
+                    JSON.parse(carrinhoSalvo);
+
+            } catch (erro) {
+
+                mostrarCarrinhoVazio();
+
+                return;
+
+            }
+
+
+            if (
+                !Array.isArray(produtos) ||
+                produtos.length === 0
+            ) {
+
+                mostrarCarrinhoVazio();
+
+                return;
+
+            }
+
+
+            resumo.innerHTML = "";
+
+
+            let total = 0;
+
+
+            produtos.forEach(function(produto) {
+
+
+                const quantidade =
+                    Number(produto.quantidade) || 1;
+
+
+                const preco =
+                    Number(produto.preco) || 0;
+
+
+                const subtotal =
+                    preco * quantidade;
+
+
+                total += subtotal;
+
+
+                const item =
+                    document.createElement("div");
+
+
+                item.className =
+                    "resumo-item";
+
+
+                item.innerHTML = `
+
+                    <div>
+
+                        <strong>
+                            ${produto.nome}
+                        </strong>
+
+
+                        <span>
+                            Quantidade:
+                            ${quantidade}
+                        </span>
+
+                    </div>
+
+
+                    <strong>
+
+                        R$
+                        ${subtotal
+                            .toFixed(2)
+                            .replace(".", ",")}
+
+                    </strong>
+
+                `;
+
+
+                resumo.appendChild(item);
+
+            });
+
+
+            totalElemento.textContent =
+
+                "R$ " +
+
+                total
+                    .toFixed(2)
+                    .replace(".", ",");
+
+
+            // Guarda o total atual
+
+            localStorage.setItem(
+                "totalPedidoDMG",
+                total.toFixed(2)
+            );
+
+        }
+
+
+
+        // ====================================
+        // CARRINHO VAZIO
+        // ====================================
+
+        function mostrarCarrinhoVazio() {
+
+            const resumo =
+                document.getElementById(
+                    "resumoProdutos"
+                );
+
+
+            const totalElemento =
+                document.getElementById(
+                    "checkoutTotal"
+                );
+
+
+            if (resumo) {
+
+                resumo.innerHTML = `
+
+                    <div class="checkout-vazio">
+
+                        🛒
+
+                        <p>
+                            Seu carrinho está vazio.
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            if (totalElemento) {
+
+                totalElemento.textContent =
+                    "R$ 0,00";
+
+            }
+
+        }
+
+
+
+        // ====================================
+        // GERAR NÚMERO DO PEDIDO
+        // ====================================
+
+        function gerarNumeroPedido() {
+
+            let numero =
+                localStorage.getItem(
+                    "ultimoPedidoDMG"
+                );
+
+
+            if (!numero) {
+
+                numero = 0;
+
+            }
+
+
+            numero =
+                Number(numero) + 1;
+
+
+            localStorage.setItem(
+                "ultimoPedidoDMG",
+                numero
+            );
+
+
+            return "DMG-" +
+                String(numero).padStart(4, "0");
+
+        }
+
+
+
+        // ====================================
+        // PROCESSAR CHECKOUT
+        // ====================================
+
+        function processarCheckout() {
+
+
+            const nome =
+                document.getElementById(
+                    "nome"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "email"
+                ).value.trim();
+
+
+            if (nome === "") {
+
+                alert(
+                    "Digite seu nome para continuar."
+                );
+
+                return;
+
+            }
+
+
+            if (email === "") {
+
+                alert(
+                    "Digite seu e-mail para continuar."
+                );
+
+                return;
+
+            }
+
+
+            const pagamento =
+                document.querySelector(
+                    'input[name="pagamento"]:checked'
+                );
+
+
+            if (!pagamento) {
+
+                alert(
+                    "Escolha uma forma de pagamento."
+                );
+
+                return;
+
+            }
+
+
+            const carrinhoSalvo =
+                localStorage.getItem(
+                    "carrinhoDMG"
+                );
+
+
+            if (!carrinhoSalvo) {
+
+                alert(
+                    "Seu carrinho está vazio."
+                );
+
+                return;
+
+            }
+
+
+            let produtos;
+
+
+            try {
+
+                produtos =
+                    JSON.parse(carrinhoSalvo);
+
+            } catch (erro) {
+
+                alert(
+                    "Não foi possível carregar o seu pedido."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !Array.isArray(produtos) ||
+                produtos.length === 0
+            ) {
+
+                alert(
+                    "Seu carrinho está vazio."
+                );
+
+                return;
+
+            }
+
+
+            // Calcula o total
+
+            let total = 0;
+
+
+            produtos.forEach(function(produto) {
+
+                const quantidade =
+                    Number(produto.quantidade) || 1;
+
+
+                const preco =
+                    Number(produto.preco) || 0;
+
+
+                total +=
+                    preco * quantidade;
+
+            });
+
+
+            // Gera o pedido
+
+            const numeroPedido =
+                gerarNumeroPedido();
+
+
+            // Cria os dados do pedido
+
+            const pedido = {
+
+                numero:
+                    numeroPedido,
+
+                nome:
+                    nome,
+
+                email:
+                    email,
+
+                pagamento:
+                    pagamento.value,
+
+                produtos:
+                    produtos,
+
+                total:
+                    Number(total.toFixed(2)),
+
+                status:
+                    "Aguardando pagamento",
+
+                data:
+                    new Date().toISOString()
+
+            };
+
+
+            // Salva o pedido
+
+            localStorage.setItem(
+
+                "pedidoAtualDMG",
+
+                JSON.stringify(pedido)
+
+            );
+
+
+            // ====================================
+            // PIX
+            // ====================================
+
+            if (pagamento.value === "pix") {
+
+                window.location.href =
+                    "pix.html";
+
+                return;
+
+            }
+
+        }
+
+
+
+        // ====================================
+        // VOLTAR PARA A LOJA
+        // ====================================
+
+        function voltarLoja() {
+
+            window.location.href =
+                "loja.html";
+
+        }
+
+
+
+        // ====================================
+        // VOLTAR PARA O CARRINHO
+        // ====================================
+
+        function voltarCarrinho() {
+
+            window.location.href =
+                "loja.html";
+
+        }
+
+
+
+        // ====================================
+        // INICIAR
+        // ====================================
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                carregarCheckout();
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

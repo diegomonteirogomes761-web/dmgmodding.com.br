@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>DMG Modding | Pedido Confirmado</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+
+    <style>
+
+        /* ========================================
+           PÁGINA DE PEDIDO CONFIRMADO
+        ======================================== */
+
+        .confirmacao-pagina {
+
+            max-width: 1000px;
+
+            margin: 0 auto;
+
+            padding: 60px 25px 80px;
+
+        }
+
+
+        /* ========================================
+           CABEÇALHO
+        ======================================== */
+
+        .confirmacao-cabecalho {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .confirmacao-icone {
+
+            width: 75px;
+
+            height: 75px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #c7a64a;
+
+            color: #111;
+
+            font-size: 36px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.15);
+
+        }
+
+
+        .confirmacao-cabecalho h1 {
+
+            margin-bottom: 12px;
+
+            color: #222;
+
+            font-size: 38px;
+
+            font-weight: 800;
+
+        }
+
+
+        .confirmacao-cabecalho p {
+
+            color: #666;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ========================================
+           AVISO DE TESTE
+        ======================================== */
+
+        .confirmacao-teste {
+
+            max-width: 700px;
+
+            margin: 0 auto 30px;
+
+            padding: 15px 20px;
+
+            border: 1px solid #d8d8d8;
+
+            border-radius: 10px;
+
+            background: #f7f7f7;
+
+            text-align: center;
+
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .confirmacao-teste strong {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #8e752c;
+
+        }
+
+
+        /* ========================================
+           CAIXA DO PEDIDO
+        ======================================== */
+
+        .pedido-caixa {
+
+            max-width: 750px;
+
+            margin: 0 auto;
+
+            padding: 30px;
+
+            background: #ffffff;
+
+            border: 1px solid #dedede;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        /* ========================================
+           NÚMERO DO PEDIDO
+        ======================================== */
+
+        .pedido-numero {
+
+            padding-bottom: 20px;
+
+            margin-bottom: 20px;
+
+            border-bottom: 1px solid #e1e1e1;
+
+        }
+
+
+        .pedido-numero span {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #888;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .pedido-numero strong {
+
+            color: #222;
+
+            font-size: 22px;
+
+        }
+
+
+        /* ========================================
+           CLIENTE
+        ======================================== */
+
+        .pedido-cliente {
+
+            padding-bottom: 20px;
+
+            margin-bottom: 20px;
+
+            border-bottom: 1px solid #e1e1e1;
+
+        }
+
+
+        .pedido-cliente strong {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #333;
+
+            font-size: 13px;
+
+        }
+
+
+        .pedido-cliente span {
+
+            color: #666;
+
+            font-size: 14px;
+
+        }
+
+
+        /* ========================================
+           PRODUTOS
+        ======================================== */
+
+        .pedido-produtos h2 {
+
+            margin-bottom: 18px;
+
+            color: #222;
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+        }
+
+
+        .produto-download {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 18px 0;
+
+            border-bottom: 1px solid #e5e5e5;
+
+        }
+
+
+        .produto-download:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .produto-download-info {
+
+            flex: 1;
+
+        }
+
+
+        .produto-download-info strong {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #222;
+
+            font-size: 16px;
+
+        }
+
+
+        .produto-download-info span {
+
+            color: #777;
+
+            font-size: 13px;
+
+        }
+
+
+        /* ========================================
+           BOTÃO DOWNLOAD
+        ======================================== */
+
+        .botao-download {
+
+            display: inline-block;
+
+            padding: 12px 18px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #c7a64a;
+
+            color: #111;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .botao-download:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 15px rgba(0, 0, 0, 0.15);
+
+        }
+
+
+        /* ========================================
+           TOTAL
+        ======================================== */
+
+        .pedido-total {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding-top: 22px;
+
+            margin-top: 10px;
+
+            border-top: 1px solid #ddd;
+
+        }
+
+
+        .pedido-total span {
+
+            color: #555;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+        }
+
+
+        .pedido-total strong {
+
+            color: #222;
+
+            font-size: 24px;
+
+        }
+
+
+        /* ========================================
+           BOTÕES
+        ======================================== */
+
+        .confirmacao-acoes {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .botao-loja {
+
+            display: inline-block;
+
+            padding: 14px 25px;
+
+            border-radius: 7px;
+
+            background: #222;
+
+            color: #fff;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+
+        }
+
+
+        .botao-loja:hover {
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .botao-inicio {
+
+            color: #8e752c;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+        }
+
+
+        /* ========================================
+           PEDIDO NÃO ENCONTRADO
+        ======================================== */
+
+        .pedido-erro {
+
+            padding: 35px;
+
+            text-align: center;
+
+            color: #666;
+
+        }
+
+
+        .pedido-erro strong {
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #222;
+
+            font-size: 20px;
+
+        }
+
+
+        /* ========================================
+           CELULAR
+        ======================================== */
+
+        @media (max-width: 600px) {
+
+            .confirmacao-pagina {
+
+                padding: 40px 18px 60px;
+
+            }
+
+
+            .confirmacao-cabecalho h1 {
+
+                font-size: 30px;
+
+            }
+
+
+            .pedido-caixa {
+
+                padding: 22px;
+
+            }
+
+
+            .produto-download {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+            }
+
+
+            .botao-download {
+
+                text-align: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================
+     CABEÇALHO
+======================================== -->
+
+<header>
+
+    <a href="index.html" class="logo">
+
+        DMG <span>MODDING</span>
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="loja.html">
+            Loja
+        </a>
+
+        <a href="modelos3d.html">
+            Modelos 3D
+        </a>
+
+        <a href="mods.html">
+            Mods
+        </a>
+
+        <a href="videos.html">
+            Vídeos
+        </a>
+
+    </nav>
+
+
+    <button
+        class="carrinho"
+        onclick="voltarLoja()">
+
+        🛒
+
+    </button>
+
+</header>
+
+
+
+<!-- ========================================
+     CONTEÚDO
+======================================== -->
+
+<main>
+
+<section class="confirmacao-pagina">
+
+
+    <!-- CABEÇALHO -->
+
+    <div class="confirmacao-cabecalho">
+
+        <div class="confirmacao-icone">
+
+            ✓
+
+        </div>
+
+
+        <h1>
+            PAGAMENTO CONFIRMADO!
+        </h1>
+
+
+        <p>
+            Obrigado pela sua compra na DMG Modding.
+            <br>
+            Seu pedido foi confirmado com sucesso.
+        </p>
+
+    </div>
+
+
+
+    <!-- AVISO -->
+
+    <div class="confirmacao-teste">
+
+        <strong>
+            🧪 MODO DE TESTE
+        </strong>
+
+        Este pedido foi confirmado através do sistema
+        de pagamento de teste. Nenhum dinheiro foi movimentado.
+
+    </div>
+
+
+
+    <!-- ====================================
+         PEDIDO
+    ==================================== -->
+
+    <div
+        id="pedidoContainer"
+        class="pedido-caixa">
+
+        <!-- Será preenchido pelo JavaScript -->
+
+    </div>
+
+
+
+    <!-- AÇÕES -->
+
+    <div class="confirmacao-acoes">
+
+        <a
+            href="loja.html"
+            class="botao-loja">
+
+            CONTINUAR COMPRANDO
+
+        </a>
+
+
+        <a
+            href="index.html"
+            class="botao-inicio">
+
+            ← VOLTAR PARA O INÍCIO
+
+        </a>
+
+    </div>
+
+
+</section>
+
+</main>
+
+
+
+<!-- ========================================
+     RODAPÉ
+======================================== -->
+
+<footer>
+
+    <h2>
+        DMG MODDING
+    </h2>
+
+
+    <p>
+        Uma nova experiência no agro.
+    </p>
+
+
+    <p>
+        © 2026 DMG Modding
+    </p>
+
+</footer>
+
+
+
+<script>
+
+
+// ========================================
+// PEGAR PEDIDO
+// ========================================
+
+function pegarPedido() {
+
+    const dados =
+        localStorage.getItem(
+            "pedidoAtualDMG"
+        );
+
+
+    if (!dados) {
+
+        return null;
+
+    }
+
+
+    try {
+
+        return JSON.parse(dados);
+
+    }
+
+    catch (erro) {
+
+        console.error(
+            "Erro ao carregar pedido:",
+            erro
+        );
+
+        return null;
+
+    }
+
+}
+
+
+
+// ========================================
+// FORMATAR DINHEIRO
+// ========================================
+
+function formatarPreco(valor) {
+
+    return (
+
+        "R$ " +
+
+        Number(valor || 0)
+            .toFixed(2)
+            .replace(".", ",")
+
+    );
+
+}
+
+
+
+// ========================================
+// CARREGAR PEDIDO
+// ========================================
+
+function carregarPedido() {
+
+
+    const container =
+        document.getElementById(
+            "pedidoContainer"
+        );
+
+
+    const pedido =
+        pegarPedido();
+
+
+
+    // ====================================
+    // VERIFICAR PEDIDO
+    // ====================================
+
+    if (!pedido) {
+
+        container.innerHTML = `
+
+            <div class="pedido-erro">
+
+                <strong>
+                    Pedido não encontrado
+                </strong>
+
+                <p>
+                    Não foi possível encontrar
+                    os dados deste pedido.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    // ====================================
+    // VERIFICAR PAGAMENTO
+    // ====================================
+
+    const pagamentoConfirmado =
+
+        pedido.status ===
+        "Pagamento confirmado - TESTE";
+
+
+
+    if (!pagamentoConfirmado) {
+
+        container.innerHTML = `
+
+            <div class="pedido-erro">
+
+                <strong>
+                    Pagamento ainda não confirmado
+                </strong>
+
+                <p>
+                    O download será liberado
+                    depois da confirmação do pagamento.
+                </p>
+
+                <br>
+
+                <a
+                    href="pix.html"
+                    class="botao-loja">
+
+                    VOLTAR PARA O PAGAMENTO
+
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    // ====================================
+    // DADOS DO CLIENTE
+    // ====================================
+
+    let clienteHTML = "";
+
+
+
+    if (pedido.nome) {
+
+        clienteHTML = `
+
+            <div class="pedido-cliente">
+
+                <strong>
+                    CLIENTE
+                </strong>
+
+                <span>
+                    ${pedido.nome}
+                </span>
+
+                ${
+                    pedido.email
+                    ? `<br><span>${pedido.email}</span>`
+                    : ""
+                }
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    // ====================================
+    // PRODUTOS
+    // ====================================
+
+    let produtosHTML = "";
+
+    let total = 0;
+
+
+
+    if (
+        pedido.produtos &&
+        Array.isArray(pedido.produtos)
+    ) {
+
+
+        pedido.produtos.forEach(
+            function(produto) {
+
+
+                const preco =
+                    Number(
+                        produto.preco
+                    ) || 0;
+
+
+                const quantidade =
+                    Number(
+                        produto.quantidade
+                    ) || 1;
+
+
+                const subtotal =
+                    preco * quantidade;
+
+
+                total += subtotal;
+
+
+
+                /*
+                    Caminho do arquivo OBJ.
+
+                    Para o primeiro produto,
+                    estamos usando:
+
+                    roda-7cm.obj
+                */
+
+
+                let arquivo =
+                    "roda-7cm.obj";
+
+
+
+                // ====================================
+                // FUTUROS PRODUTOS
+                // ====================================
+
+                if (
+                    produto.nome &&
+                    produto.nome
+                        .toLowerCase()
+                        .includes("roda")
+                ) {
+
+                    arquivo =
+                        "roda-7cm.obj";
+
+                }
+
+
+
+                produtosHTML += `
+
+                    <div class="produto-download">
+
+                        <div
+                            class="produto-download-info">
+
+                            <strong>
+                                ${produto.nome}
+                            </strong>
+
+                            <span>
+                                Quantidade:
+                                ${quantidade}
+                            </span>
+
+                            <br>
+
+                            <span>
+                                ${formatarPreco(subtotal)}
+                            </span>
+
+                        </div>
+
+
+                        <a href="roda-7cm.obj" download="roda-7cm.obj" class="botao-download">
+    ↓ BAIXAR ARQUIVO OBJ
+</a>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+
+    // ====================================
+    // MOSTRAR PEDIDO
+    // ====================================
+
+    container.innerHTML = `
+
+        <div class="pedido-numero">
+
+            <span>
+                Número do pedido
+            </span>
+
+            <strong>
+                ${pedido.numero || "DMG-0000"}
+            </strong>
+
+        </div>
+
+
+        ${clienteHTML}
+
+
+        <div class="pedido-produtos">
+
+            <h2>
+                SEUS PRODUTOS
+            </h2>
+
+
+            ${
+                produtosHTML ||
+                `
+                <div class="pedido-erro">
+
+                    Nenhum produto encontrado.
+
+                </div>
+                `
+            }
+
+        </div>
+
+
+        <div class="pedido-total">
+
+            <span>
+                TOTAL DO PEDIDO
+            </span>
+
+            <strong>
+                ${formatarPreco(total)}
+            </strong>
+
+        </div>
+
+    `;
+
+}
+
+
+
+// ========================================
+// VOLTAR PARA A LOJA
+// ========================================
+
+function voltarLoja() {
+
+    window.location.href =
+        "loja.html";
+
+}
+
+
+
+// ========================================
+// INICIAR
+// ========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        carregarPedido();
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

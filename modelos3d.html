@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>DMG Modding | Modelos 3D</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <a href="index.html" class="logo">
+            DMG <span>MODDING</span>
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="loja.html">
+                Loja
+            </a>
+
+            <a href="modelos3d.html">
+                Modelos 3D
+            </a>
+
+            <a href="mods.html">
+                Mods
+            </a>
+
+            <a href="videos.html">
+                Vídeos
+            </a>
+
+        </nav>
+
+
+        <button
+            class="carrinho"
+            onclick="abrirCarrinho()">
+
+            🛒
+
+        </button>
+
+    </header>
+
+
+
+    <main>
+
+
+        <section class="titulo">
+
+            <p class="destaque">
+                DMG MODDING
+            </p>
+
+
+            <h1>
+                MODELOS 3D
+            </h1>
+
+
+            <p>
+                Modelos 3D desenvolvidos pela DMG Modding.
+            </p>
+
+        </section>
+
+
+
+        <section class="produtos">
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <div class="imagem">
+
+                        <img
+                            src="imagens/modelo01.jpg"
+                            alt="Modelo 3D DMG #01">
+
+                    </div>
+
+
+                    <h3>
+                        Modelo 3D DMG #01
+                    </h3>
+
+
+                    <p>
+                        Modelo 3D
+                    </p>
+
+
+                    <strong>
+                        R$ 19,90
+                    </strong>
+
+
+                    <button
+                        onclick="adicionarCarrinho(
+                            'Modelo 3D DMG #01',
+                            19.90
+                        )">
+
+                        COMPRAR
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <div
+        id="carrinho"
+        class="carrinho-box">
+
+
+        <div class="carrinho-conteudo">
+
+
+            <button
+                class="fechar"
+                onclick="fecharCarrinho()">
+
+                ✕
+
+            </button>
+
+
+            <h2>
+                SEU CARRINHO
+            </h2>
+
+
+            <div id="listaCarrinho"></div>
+
+
+            <div class="total">
+
+                Total:
+
+                R$
+
+                <span id="total">
+                    0,00
+                </span>
+
+            </div>
+
+
+            <button
+                class="finalizar"
+                onclick="finalizarCompra()">
+
+                FINALIZAR COMPRA
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <footer>
+
+        <h2>
+            DMG MODDING
+        </h2>
+
+
+        <p>
+            Uma nova experiência no agro.
+        </p>
+
+
+        <p>
+            © 2026 DMG Modding
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/loja.js"></script>
+
+
+</body>
+
+</html>

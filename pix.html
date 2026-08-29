@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>DMG Modding | Pagamento PIX</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="index.html" class="logo">
+        DMG <span>MODDING</span>
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="loja.html">
+            Loja
+        </a>
+
+        <a href="modelos3d.html">
+            Modelos 3D
+        </a>
+
+        <a href="mods.html">
+            Mods
+        </a>
+
+        <a href="videos.html">
+            Vídeos
+        </a>
+
+    </nav>
+
+
+    <button
+        class="carrinho"
+        onclick="voltarCheckout()">
+
+        🛒
+
+    </button>
+
+</header>
+
+
+
+<main>
+
+<section class="pix-pagina">
+
+
+    <div class="pix-cabecalho">
+
+        <p class="destaque">
+            DMG MODDING
+        </p>
+
+
+        <h1>
+            PAGAMENTO PIX
+        </h1>
+
+
+        <p>
+            Finalize seu pedido através do PIX.
+        </p>
+
+    </div>
+
+
+
+    <!-- AVISO -->
+
+    <div class="pix-teste">
+
+        🧪
+
+        <strong>
+            MODO DE TESTE
+        </strong>
+
+        <span>
+            Este pagamento é apenas uma simulação.
+            Nenhum dinheiro será movimentado.
+        </span>
+
+    </div>
+
+
+
+    <div class="pix-grid">
+
+
+        <!-- ==================================
+             PAGAMENTO
+        ================================== -->
+
+        <div class="pix-pagamento">
+
+            <h2>
+                PAGUE COM PIX
+            </h2>
+
+
+            <p>
+                Escaneie o QR Code abaixo
+                usando o aplicativo do seu banco.
+            </p>
+
+
+
+            <!-- QR CODE -->
+
+            <div class="qr-code">
+
+                <div
+                    id="qrcode">
+
+                    <!-- QR Code aparecerá aqui -->
+
+                </div>
+
+            </div>
+
+
+            <p class="qr-legenda">
+
+                QR CODE DE TESTE
+
+            </p>
+
+
+
+            <!-- ==================================
+                 CÓDIGO PIX
+            ================================== -->
+
+            <div class="codigo-area">
+
+                <label>
+                    CÓDIGO PIX
+                </label>
+
+
+                <div class="codigo-container">
+
+                    <input
+                        type="text"
+                        id="codigoPix"
+                        value=""
+                        readonly>
+
+
+                    <button
+                        onclick="copiarPix()">
+
+                        COPIAR
+
+                    </button>
+
+                </div>
+
+
+                <p id="mensagemCopiado"></p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================
+             RESUMO
+        ================================== -->
+
+        <div class="pix-resumo">
+
+            <h2>
+                RESUMO DO PEDIDO
+            </h2>
+
+
+            <!-- NÚMERO DO PEDIDO -->
+
+            <div
+                id="numeroPedido"
+                style="margin-bottom: 15px;">
+
+            </div>
+
+
+            <div id="produtosPix">
+
+                <!-- Produtos aparecem aqui -->
+
+            </div>
+
+
+            <div class="pix-total">
+
+                <span>
+                    TOTAL
+                </span>
+
+
+                <strong id="totalPix">
+
+                    R$ 0,00
+
+                </strong>
+
+            </div>
+
+
+            <div class="pix-status">
+
+                <span>
+                    ●
+                </span>
+
+                <span id="statusPedido">
+                    Aguardando pagamento
+                </span>
+
+            </div>
+
+
+            <button
+                class="botao-pix"
+                onclick="simularPagamento()">
+
+                SIMULAR PAGAMENTO
+
+            </button>
+
+
+            <button
+                class="voltar-pix"
+                onclick="voltarCheckout()">
+
+                ← VOLTAR
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+    <h2>
+        DMG MODDING
+    </h2>
+
+
+    <p>
+        Uma nova experiência no agro.
+    </p>
+
+
+    <p>
+        © 2026 DMG Modding
+    </p>
+
+</footer>
+
+
+
+<!-- ========================================
+     BIBLIOTECA QR CODE
+======================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+
+
+<script>
+
+
+// ========================================
+// PEGAR PEDIDO
+// ========================================
+
+function pegarPedido() {
+
+    const dados =
+        localStorage.getItem(
+            "pedidoAtualDMG"
+        );
+
+
+    if (!dados) {
+
+        return null;
+
+    }
+
+
+    try {
+
+        return JSON.parse(dados);
+
+    }
+
+    catch (erro) {
+
+        console.error(
+            "Erro ao carregar pedido:",
+            erro
+        );
+
+        return null;
+
+    }
+
+}
+
+
+
+// ========================================
+// MOSTRAR PEDIDO
+// ========================================
+
+function carregarPix() {
+
+
+    const pedido =
+        pegarPedido();
+
+
+    const lista =
+        document.getElementById(
+            "produtosPix"
+        );
+
+
+    const totalElemento =
+        document.getElementById(
+            "totalPix"
+        );
+
+
+    const numeroPedido =
+        document.getElementById(
+            "numeroPedido"
+        );
+
+
+    const statusPedido =
+        document.getElementById(
+            "statusPedido"
+        );
+
+
+    lista.innerHTML = "";
+
+
+    // ====================================
+    // VERIFICAR PEDIDO
+    // ====================================
+
+    if (!pedido) {
+
+
+        lista.innerHTML = `
+
+            <div class="pix-vazio">
+
+                🛒
+
+                <p>
+                    Nenhum pedido encontrado.
+                </p>
+
+            </div>
+
+        `;
+
+
+        totalElemento.textContent =
+            "R$ 0,00";
+
+
+        return;
+
+    }
+
+
+
+    // ====================================
+    // NÚMERO DO PEDIDO
+    // ====================================
+
+    if (numeroPedido) {
+
+        numeroPedido.innerHTML = `
+
+            <strong>
+                Pedido #${pedido.numero}
+            </strong>
+
+        `;
+
+    }
+
+
+
+    // ====================================
+    // STATUS
+    // ====================================
+
+    if (statusPedido) {
+
+        statusPedido.textContent =
+            pedido.status ||
+            "Aguardando pagamento";
+
+    }
+
+
+
+    // ====================================
+    // PRODUTOS
+    // ====================================
+
+    if (
+        !pedido.produtos ||
+        !Array.isArray(pedido.produtos) ||
+        pedido.produtos.length === 0
+    ) {
+
+
+        lista.innerHTML = `
+
+            <div class="pix-vazio">
+
+                🛒
+
+                <p>
+                    Nenhum produto encontrado.
+                </p>
+
+            </div>
+
+        `;
+
+
+        totalElemento.textContent =
+            "R$ 0,00";
+
+
+        return;
+
+    }
+
+
+
+    let total = 0;
+
+
+
+    pedido.produtos.forEach(
+        function(produto) {
+
+
+            const preco =
+                Number(
+                    produto.preco
+                ) || 0;
+
+
+            const quantidade =
+                Number(
+                    produto.quantidade
+                ) || 1;
+
+
+            const subtotal =
+                preco * quantidade;
+
+
+            total += subtotal;
+
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "pix-item";
+
+
+            item.innerHTML = `
+
+                <div>
+
+                    <strong>
+                        ${produto.nome}
+                    </strong>
+
+
+                    <span>
+
+                        Quantidade:
+                        ${quantidade}
+
+                    </span>
+
+                </div>
+
+
+                <strong>
+
+                    R$
+                    ${subtotal
+                        .toFixed(2)
+                        .replace(".", ",")}
+
+                </strong>
+
+            `;
+
+
+            lista.appendChild(item);
+
+        }
+    );
+
+
+
+    // ====================================
+    // TOTAL
+    // ====================================
+
+    totalElemento.textContent =
+
+        "R$ " +
+
+        total
+            .toFixed(2)
+            .replace(".", ",");
+
+
+
+    // ====================================
+    // GERAR QR CODE
+    // ====================================
+
+    gerarQRCode(
+        pedido,
+        total
+    );
+
+}
+
+
+
+// ========================================
+// GERAR QR CODE
+// ========================================
+
+function gerarQRCode(
+    pedido,
+    total
+) {
+
+
+    const area =
+        document.getElementById(
+            "qrcode"
+        );
+
+
+    if (!area) {
+
+        return;
+
+    }
+
+
+    area.innerHTML = "";
+
+
+
+    /*
+       QR CODE DE TESTE.
+
+       Este código NÃO representa um PIX real.
+    */
+
+
+    const codigoTeste =
+
+        "DMG MODDING | " +
+
+        "PEDIDO " +
+
+        pedido.numero +
+
+        " | VALOR R$ " +
+
+        total
+            .toFixed(2);
+
+
+
+    new QRCode(
+
+        area,
+
+        {
+
+            text:
+                codigoTeste,
+
+            width:
+                200,
+
+            height:
+                200
+
+        }
+
+    );
+
+
+
+    // Coloca o mesmo código no campo
+
+    const campo =
+        document.getElementById(
+            "codigoPix"
+        );
+
+
+    if (campo) {
+
+        campo.value =
+            codigoTeste;
+
+    }
+
+}
+
+
+
+// ========================================
+// COPIAR PIX
+// ========================================
+
+function copiarPix() {
+
+
+    const campo =
+        document.getElementById(
+            "codigoPix"
+        );
+
+
+    if (!campo) {
+
+        return;
+
+    }
+
+
+    navigator.clipboard
+        .writeText(campo.value)
+
+        .then(function() {
+
+
+            const mensagem =
+                document.getElementById(
+                    "mensagemCopiado"
+                );
+
+
+            mensagem.textContent =
+                "✓ Código PIX copiado!";
+
+
+            setTimeout(function() {
+
+                mensagem.textContent =
+                    "";
+
+            }, 3000);
+
+
+        })
+
+        .catch(function() {
+
+
+            campo.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+
+            const mensagem =
+                document.getElementById(
+                    "mensagemCopiado"
+                );
+
+
+            mensagem.textContent =
+                "✓ Código PIX copiado!";
+
+        });
+
+}
+
+
+
+// ========================================
+// SIMULAR PAGAMENTO
+// ========================================
+
+function simularPagamento() {
+
+
+    const pedido =
+        pegarPedido();
+
+
+    if (!pedido) {
+
+        alert(
+            "Nenhum pedido encontrado."
+        );
+
+        return;
+
+    }
+
+
+    // Atualiza o status
+
+    pedido.status =
+        "Pagamento confirmado - TESTE";
+
+
+    pedido.dataPagamento =
+        new Date().toISOString();
+
+
+    // Salva o pedido atualizado
+
+    localStorage.setItem(
+
+        "pedidoAtualDMG",
+
+        JSON.stringify(pedido)
+
+    );
+
+
+    // Mensagem de confirmação
+
+    alert(
+
+        "🧪 PAGAMENTO DE TESTE\n\n" +
+
+        "Pagamento simulado com sucesso!\n\n" +
+
+        "Pedido: " +
+
+        pedido.numero +
+
+        "\n\n" +
+
+        "Nenhum dinheiro foi movimentado."
+
+    );
+
+
+    // ====================================
+    // IR PARA PEDIDO CONFIRMADO
+    // ====================================
+
+    window.location.href =
+        "pedido-confirmado.html";
+
+}
+
+
+
+// ========================================
+// VOLTAR
+// ========================================
+
+function voltarCheckout() {
+
+    window.location.href =
+        "checkout.html";
+
+}
+
+
+
+// ========================================
+// INICIAR
+// ========================================
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    function() {
+
+        carregarPix();
+
+    }
+
+);
+
+
+</script>
+
+
+</body>
+
+</html>

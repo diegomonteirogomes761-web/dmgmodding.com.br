@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DMG Modding | Roda 7cm 3D</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+
+    <style>
+
+        /* Área principal do produto */
+
+        .produto-pagina {
+            padding-top: 35px;
+            padding-bottom: 70px;
+        }
+
+
+        /* Caminho Loja / Produto */
+
+        .produto-caminho {
+            margin-bottom: 35px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        .produto-caminho a {
+            color: #8e752c;
+            font-weight: bold;
+        }
+
+
+        /* ==================================================
+           ÁREA PRINCIPAL
+        ================================================== */
+
+        .produto-detalhes {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(300px, 430px)
+                minmax(0, 1fr);
+
+            gap: 55px;
+
+            align-items: start;
+
+            margin-bottom: 50px;
+        }
+
+
+        /* ==================================================
+           IMAGEM
+        ================================================== */
+
+        .produto-foto {
+
+            width: 100%;
+
+            height: 400px;
+
+            padding: 18px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #ffffff;
+
+            border: 1px solid #d8d8d8;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.10);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .produto-foto::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 8px;
+
+            border: 1px solid #eeeeee;
+
+            border-radius: 9px;
+
+            pointer-events: none;
+        }
+
+
+        .produto-foto img {
+
+            position: relative;
+
+            z-index: 1;
+
+            display: block;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+
+        .produto-foto .imagem-sem-foto {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 80px;
+        }
+
+
+        /* ==================================================
+           INFORMAÇÕES DO PRODUTO
+        ================================================== */
+
+        .produto-descricao {
+
+            padding-top: 2px;
+        }
+
+
+        .produto-descricao .produto-categoria {
+
+            display: inline-block;
+
+            padding: 6px 11px;
+
+            margin-bottom: 12px;
+
+            border-radius: 5px;
+
+            background: #f0ead7;
+
+            color: #8e752c;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .produto-descricao h1 {
+
+            margin-bottom: 14px;
+
+            font-size: 42px;
+
+            line-height: 1.05;
+
+            font-weight: 800;
+
+            letter-spacing: -0.5px;
+
+            color: #1d1d1d;
+        }
+
+
+        .produto-texto {
+
+            max-width: 650px;
+
+            margin-bottom: 22px;
+
+            color: #666;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ==================================================
+           PREÇO
+        ================================================== */
+
+        .produto-preco {
+
+            margin-bottom: 25px;
+
+            color: #222;
+
+            font-size: 32px;
+
+            font-weight: 800;
+        }
+
+
+        /* ==================================================
+           ESPECIFICAÇÕES
+        ================================================== */
+
+        .produto-informacoes {
+
+            width: 100%;
+
+            margin-bottom: 0;
+
+            border-top: 1px solid #e1e1e1;
+        }
+
+
+        .produto-informacoes > div {
+
+            display: grid;
+
+            grid-template-columns: 150px 1fr;
+
+            gap: 15px;
+
+            padding: 11px 0;
+
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+
+        .produto-informacoes strong {
+
+            color: #333;
+
+            font-size: 13px;
+        }
+
+
+        .produto-informacoes span {
+
+            color: #666;
+
+            font-size: 13px;
+
+            text-align: left;
+        }
+
+
+        /* ==================================================
+           SOBRE O PRODUTO
+        ================================================== */
+
+        .produto-descricao-completa {
+
+            max-width: 900px;
+
+            margin-top: 0;
+
+            padding: 30px;
+
+            background: #ffffff;
+
+            border: 1px solid #e1e1e1;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .produto-descricao-completa h2 {
+
+            margin-bottom: 18px;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.3px;
+
+            color: #222;
+        }
+
+
+        .produto-descricao-completa p {
+
+            margin-bottom: 14px;
+
+            color: #666;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        .produto-descricao-completa p:last-child {
+
+            margin-bottom: 0;
+        }
+
+
+        /* ==================================================
+           BOTÃO COMPRAR
+        ================================================== */
+
+        .botao-comprar-produto {
+
+            width: 100%;
+
+            max-width: 500px;
+
+            margin-top: 25px;
+
+            padding: 16px 25px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #c7a64a;
+
+            color: #111;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+
+            transition: 0.2s;
+        }
+
+
+        .botao-comprar-produto:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* ==================================================
+           AVISO
+        ================================================== */
+
+        .produto-aviso {
+
+            max-width: 500px;
+
+            margin-top: 10px;
+
+            color: #888;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ==================================================
+           VOLTAR PARA LOJA
+        ================================================== */
+
+        .voltar-produto {
+
+            display: inline-block;
+
+            margin-top: 18px;
+
+            color: #8e752c;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .voltar-produto:hover {
+
+            color: #222;
+
+            transform: translateX(-3px);
+        }
+
+
+        /* ==================================================
+           CELULAR
+        ================================================== */
+
+        @media (max-width: 800px) {
+
+            .produto-detalhes {
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+
+
+            .produto-foto {
+
+                height: 330px;
+
+                max-width: 500px;
+
+                margin: 0 auto;
+            }
+
+
+            .produto-descricao h1 {
+
+                font-size: 34px;
+            }
+
+
+            .produto-preco {
+
+                font-size: 28px;
+            }
+
+
+            .produto-descricao-completa {
+
+                padding: 22px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .produto-foto {
+
+                height: 280px;
+            }
+
+
+            .produto-informacoes > div {
+
+                grid-template-columns: 120px 1fr;
+            }
+
+        }
+
+
+        /* ==================================================
+           CARRINHO
+           
+           Somente o posicionamento e o fundo da caixa
+           foram ajustados.
+        ================================================== */
+
+        .carrinho-overlay {
+
+            position: fixed !important;
+
+            top: 0 !important;
+            left: 0 !important;
+
+            width: 100vw !important;
+            height: 100vh !important;
+
+            z-index: 9999 !important;
+
+            display: flex;
+
+            align-items: center !important;
+            justify-content: center !important;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.65);
+
+        }
+
+
+        .carrinho-caixa {
+
+            width: 100%;
+
+            max-width: 550px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: #111111;
+
+            border: 2px solid #000000;
+
+            border-radius: 14px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.45);
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     CABEÇALHO
+================================================== -->
+
+<header>
+
+    <a href="index.html" class="logo">
+
+        DMG <span>MODDING</span>
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="loja.html">
+            Loja
+        </a>
+
+        <a href="modelos3d.html">
+            Modelos 3D
+        </a>
+
+        <a href="mods.html">
+            Mods
+        </a>
+
+        <a href="videos.html">
+            Vídeos
+        </a>
+
+    </nav>
+
+
+    <button
+        class="carrinho"
+        onclick="abrirCarrinhoProduto()">
+
+        🛒
+
+    </button>
+
+</header>
+
+
+
+<!-- ==================================================
+     PRODUTO
+================================================== -->
+
+<main>
+
+<section class="produto-pagina">
+
+
+    <div class="produto-caminho">
+
+        <a href="loja.html">
+            Loja
+        </a>
+
+        <span>
+            /
+        </span>
+
+        <span>
+            Roda 7cm 3D
+        </span>
+
+    </div>
+
+
+
+    <div class="produto-detalhes">
+
+
+        <!-- IMAGEM -->
+
+        <div class="produto-foto">
+
+            <img
+                src="imagens/modelo01.jpg"
+                alt="Roda 7cm 3D"
+                onerror="mostrarImagemPadrao()">
+
+
+            <div
+                id="imagemPadrao"
+                class="imagem-sem-foto"
+                style="display:none;">
+
+                🚜
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="produto-descricao">
+
+
+            <span class="produto-categoria">
+
+                MODELO 3D
+
+            </span>
+
+
+            <h1>
+
+                Roda 7cm 3D
+
+            </h1>
+
+
+            <p class="produto-texto">
+
+                Modelo 3D de uma roda de trator
+                agrícola de brinquedo, desenvolvido
+                no tamanho de 7 cm e preparado para
+                utilização em projetos de modelagem
+                e criação no Blender.
+
+            </p>
+
+
+            <div class="produto-preco">
+
+                R$ 9,90
+
+            </div>
+
+
+            <!-- ESPECIFICAÇÕES -->
+
+            <div class="produto-informacoes">
+
+
+                <div>
+
+                    <strong>
+                        Categoria
+                    </strong>
+
+                    <span>
+                        Modelo 3D
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Formato
+                    </strong>
+
+                    <span>
+                        OBJ
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Programa
+                    </strong>
+
+                    <span>
+                        Blender
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Tamanho
+                    </strong>
+
+                    <span>
+                        7 cm
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Conteúdo
+                    </strong>
+
+                    <span>
+                        Modelo 3D
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Desenvolvido por
+                    </strong>
+
+                    <span>
+                        DMG Modding
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SOBRE O PRODUTO -->
+
+    <div class="produto-descricao-completa">
+
+
+        <h2>
+
+            SOBRE O PRODUTO
+
+        </h2>
+
+
+        <p>
+
+            A Roda 7cm 3D é um modelo desenvolvido
+            para representar uma roda de trator
+            agrícola de brinquedo, com dimensões
+            aproximadas de 7 cm.
+
+        </p>
+
+
+        <p>
+
+            O modelo foi pensado para projetos de
+            modelagem 3D, personalização de
+            miniaturas, prototipagem e outras
+            criações relacionadas ao universo
+            agrícola.
+
+        </p>
+
+
+        <p>
+
+            O arquivo é disponibilizado no formato
+            OBJ, permitindo sua importação em
+            softwares compatíveis, incluindo o
+            Blender. O produto contém o modelo 3D
+            da roda.
+
+        </p>
+
+
+        <p>
+
+            Ideal para quem trabalha com criação
+            de miniaturas, projetos digitais,
+            visualizações 3D e desenvolvimento
+            de peças personalizadas.
+
+        </p>
+
+
+
+        <!-- COMPRAR -->
+
+        <button
+            class="botao-comprar-produto"
+            onclick="comprarProduto()">
+
+            COMPRAR AGORA
+
+        </button>
+
+
+        <p class="produto-aviso">
+
+            Produto digital. Após a confirmação
+            da compra, o arquivo poderá ser
+            disponibilizado para download.
+
+        </p>
+
+
+        <!-- VOLTAR -->
+
+        <a
+            href="loja.html"
+            class="voltar-produto">
+
+            ← VOLTAR PARA A LOJA
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+</main>
+
+
+
+<!-- ==================================================
+     CARRINHO
+================================================== -->
+
+<div
+    id="carrinho"
+    class="carrinho-overlay"
+    style="display:none;">
+
+
+    <div class="carrinho-caixa">
+
+
+        <div class="carrinho-topo">
+
+            <h2>
+                SEU CARRINHO
+            </h2>
+
+
+            <button
+                onclick="fecharCarrinho()">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+
+        <div
+            id="listaCarrinho"
+            class="lista-carrinho">
+
+        </div>
+
+
+
+        <div class="carrinho-total">
+
+            <span>
+                Total:
+            </span>
+
+
+            <strong>
+
+                R$
+
+                <span id="total">
+                    0,00
+                </span>
+
+            </strong>
+
+        </div>
+
+
+
+        <button
+            class="finalizar"
+            onclick="finalizarCompra()">
+
+            FINALIZAR COMPRA
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     RODAPÉ
+================================================== -->
+
+<footer>
+
+    <h2>
+        DMG MODDING
+    </h2>
+
+
+    <p>
+        Uma nova experiência no agro.
+    </p>
+
+
+    <p>
+        © 2026 DMG Modding
+    </p>
+
+</footer>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script src="js/loja.js"></script>
+
+
+<script>
+
+
+// ==================================================
+// COMPRAR PRODUTO
+// ==================================================
+
+function comprarProduto() {
+
+    adicionarCarrinho(
+        "Roda 7cm 3D",
+        9.90
+    );
+
+
+    setTimeout(function() {
+
+        const carrinho =
+            document.getElementById("carrinho");
+
+
+        if (carrinho) {
+
+            carrinho.style.display = "flex";
+
+        }
+
+    }, 50);
+
+}
+
+
+
+// ==================================================
+// ABRIR CARRINHO PELO ÍCONE
+// ==================================================
+
+function abrirCarrinhoProduto() {
+
+    const carrinho =
+        document.getElementById("carrinho");
+
+
+    if (!carrinho) {
+        return;
+    }
+
+
+    carrinho.style.display = "flex";
+
+
+    if (typeof carregarCarrinho === "function") {
+
+        carregarCarrinho();
+
+    }
+
+
+    if (typeof atualizarCarrinho === "function") {
+
+        atualizarCarrinho();
+
+    }
+
+}
+
+
+
+// ==================================================
+// IMAGEM PADRÃO
+// ==================================================
+
+function mostrarImagemPadrao() {
+
+
+    const imagem =
+        document.querySelector(
+            ".produto-foto img"
+        );
+
+
+    const imagemPadrao =
+        document.getElementById(
+            "imagemPadrao"
+        );
+
+
+    if (imagem) {
+
+        imagem.style.display =
+            "none";
+
+    }
+
+
+    if (imagemPadrao) {
+
+        imagemPadrao.style.display =
+            "flex";
+
+    }
+
+}
+
+
+
+// ==================================================
+// CARREGAR CARRINHO
+// ==================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        carregarCarrinho();
+
+        atualizarCarrinho();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
